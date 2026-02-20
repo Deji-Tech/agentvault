@@ -2,8 +2,8 @@ import * as React from "react"
 import { cn } from "@/lib/utils"
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "secondary" | "ghost" | "danger"
-  size?: "sm" | "default" | "lg"
+  variant?: "primary" | "secondary" | "ghost" | "danger" | "success"
+  size?: "sm" | "default" | "lg" | "icon"
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -11,22 +11,26 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <button
         className={cn(
-          "inline-flex items-center justify-center rounded-[10px] font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed",
+          "inline-flex items-center justify-center font-bold tracking-wider transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-cyan))] focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--bg-primary))] disabled:opacity-40 disabled:cursor-not-allowed",
           {
-            "bg-[rgb(var(--primary))] text-[rgb(var(--primaryFg))] hover:opacity-90 focus-visible:ring-[rgb(var(--focus))]":
+            "bg-[rgb(var(--accent-cyan))] text-black hover:bg-[rgb(var(--accent-cyan))]/90 hover:shadow-[0_0_20px_rgba(var(--glow-cyan))]":
               variant === "primary",
-            "bg-[rgb(var(--panel))] border border-[rgb(var(--border))] text-[rgb(var(--text))] hover:bg-[rgb(var(--chipBg))]":
+            "bg-[rgb(var(--bg-tertiary))] border border-[rgb(var(--border-default))] text-[rgb(var(--text-primary))] hover:border-[rgb(var(--accent-cyan))] hover:text-[rgb(var(--accent-cyan))]":
               variant === "secondary",
-            "bg-transparent text-[rgb(var(--text))] hover:bg-[rgb(var(--chipBg))]":
+            "bg-transparent text-[rgb(var(--text-secondary))] hover:bg-[rgb(var(--bg-tertiary))] hover:text-[rgb(var(--text-primary))]":
               variant === "ghost",
-            "bg-[rgb(var(--danger))] text-white hover:opacity-90":
+            "bg-[rgb(var(--accent-red))] text-white hover:bg-[rgb(var(--accent-red))]/90 hover:shadow-[0_0_20px_rgba(var(--glow-red))]":
               variant === "danger",
+            "bg-[rgb(var(--accent-green))] text-black hover:bg-[rgb(var(--accent-green))]/90 hover:shadow-[0_0_20px_rgba(var(--glow-green))]":
+              variant === "success",
           },
           {
-            "h-8 px-3 text-sm": size === "sm",
-            "h-10 px-4": size === "default",
-            "h-11 px-6": size === "lg",
+            "h-7 px-2.5 text-[10px]": size === "sm",
+            "h-9 px-4 text-xs": size === "default",
+            "h-11 px-6 text-sm": size === "lg",
+            "h-9 w-9 p-0": size === "icon",
           },
+          "rounded-[4px]",
           className
         )}
         ref={ref}

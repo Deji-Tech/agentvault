@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Space_Mono, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { AppShell } from "@/components/layout/app-shell";
 import { Toaster } from "@/components/ui/toaster";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const spaceMono = Space_Mono({
+  variable: "--font-space",
+  weight: ["400", "700"],
   subsets: ["latin"],
 });
 
@@ -26,13 +27,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}>
+    <html lang="en" suppressHydrationWarning className="dark">
+      <body className={`${spaceMono.variable} ${jetbrainsMono.variable} antialiased noise`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
+          defaultTheme="dark"
+          enableSystem={false}
+          disableTransitionOnChange={false}
         >
           <AppShell>
             {children}
