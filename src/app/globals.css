@@ -1,26 +1,55 @@
 @import "tailwindcss";
 
+@theme {
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains);
+  --radius-md: 10px;
+  --radius-lg: 14px;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: 248 250 252;
+  --panel: 255 255 255;
+  --panel2: 246 248 252;
+  --text: 15 23 42;
+  --muted: 71 85 105;
+  --border: 226 232 240;
+  --primary: 37 99 235;
+  --primaryFg: 255 255 255;
+  --success: 22 163 74;
+  --warning: 217 119 6;
+  --danger: 220 38 38;
+  --chipBg: 241 245 249;
+  --focus: 59 130 246;
+  --shadow: 0 1px 2px rgba(15, 23, 42, 0.06), 0 6px 18px rgba(15, 23, 42, 0.06);
+  --shadow2: 0 1px 2px rgba(15, 23, 42, 0.08), 0 10px 30px rgba(15, 23, 42, 0.10);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.dark {
+  --bg: 10 12 16;
+  --panel: 16 18 24;
+  --panel2: 20 23 30;
+  --text: 226 232 240;
+  --muted: 148 163 184;
+  --border: 40 44 56;
+  --primary: 59 130 246;
+  --primaryFg: 255 255 255;
+  --success: 34 197 94;
+  --warning: 245 158 11;
+  --danger: 239 68 68;
+  --chipBg: 12 14 20;
+  --focus: 96 165 250;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 10px 26px rgba(0, 0, 0, 0.35);
+  --shadow2: 0 1px 2px rgba(0, 0, 0, 0.55), 0 16px 40px rgba(0, 0, 0, 0.45);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html, body { 
+  height: 100%; 
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: rgb(var(--bg));
+  color: rgb(var(--text));
 }
+
+* { outline-color: rgb(var(--focus)); }
